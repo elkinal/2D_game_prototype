@@ -110,7 +110,7 @@ public class Content extends JPanel implements ActionListener {
         t.start();
         super.setDoubleBuffered(true);
         //starting the background music for the game
-        Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\house_of_leaves.wav"));
+        Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\house_of_leaves.wav"));
         setBackground(Color.BLACK);
         demonMovementThread.start();
         setFocusable(true);
@@ -119,32 +119,32 @@ public class Content extends JPanel implements ActionListener {
         //loading different tiles into buffered images
 
         try {
-            tile0 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\grass_texture.jpg"));
-            tile1 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\sand_texture.jpg"));
-            tile19 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\sand_texture.jpg"));
-            tile2 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\rock_texture.jpg"));
-            tile3 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\mud_texture.jpg"));
-            tile4 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\brick_texture.png"));
-            tile5 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\ice_texture.jpg"));
-            tile6 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\snow_texture.jpg"));
-            tile7 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\small_grass_snow.jpg"));
-            tile8 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\large_grass_snow.jpg"));
-            tile9 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\plank_texture.jpg"));
-            tile11 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\sand_pebbles_large_texture.jpg"));
-            tile13 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\broken_tile_texture.jpg"));
-            tile12 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\sand_pebbles_small_texture.jpg"));
-            tile14 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\sand_pebbles_medium_texture.jpg"));
-            tile29 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\blood_tile.png"));
-            tile99 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\battery_rock.png"));
-            tile100 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\coin_rock.png"));
-            credits1 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\credits1.png")); //fix this plz
-            player_left = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\player.png"));
-            player_right = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\player_flipped.png"));
-            jumpscare1 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\jumpscare_image_1.jpg"));
-            jumpscare2 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\jumpscare_image_2.jpg"));
-            jumpscare3 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\jumpscare_image_3.jpg"));
-            jumpscare4 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\jumpscare_image_4.jpg"));
-            demon = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\demon.png"));
+            tile0 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\grass_texture.jpg"));
+            tile1 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\sand_texture.jpg"));
+            tile19 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\sand_texture.jpg"));
+            tile2 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\rock_texture.jpg"));
+            tile3 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\mud_texture.jpg"));
+            tile4 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\brick_texture.png"));
+            tile5 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\ice_texture.jpg"));
+            tile6 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\snow_texture.jpg"));
+            tile7 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\small_grass_snow.jpg"));
+            tile8 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\large_grass_snow.jpg"));
+            tile9 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\plank_texture.jpg"));
+            tile11 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\sand_pebbles_large_texture.jpg"));
+            tile13 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\broken_tile_texture.jpg"));
+            tile12 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\sand_pebbles_small_texture.jpg"));
+            tile14 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\sand_pebbles_medium_texture.jpg"));
+            tile29 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\blood_tile.png"));
+            tile99 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\battery_rock.png"));
+            tile100 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\coin_rock.png"));
+            credits1 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\credits1.png")); //fix this plz
+            player_left = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\player.png"));
+            player_right = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\player_flipped.png"));
+            jumpscare1 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\jumpscare_image_1.jpg"));
+            jumpscare2 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\jumpscare_image_2.jpg"));
+            jumpscare3 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\jumpscare_image_3.jpg"));
+            jumpscare4 = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\jumpscare_image_4.jpg"));
+            demon = ImageIO.read(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\demon.png"));
             nextJumpScare[0] = jumpscare1;
             nextJumpScare[1] = jumpscare4;
 
@@ -165,7 +165,7 @@ public class Content extends JPanel implements ActionListener {
                         jumpScareThread.start();
                         gameOver();
                     }
-                    Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\torch_sound.wav"));
+                    Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\torch_sound.wav"));
                 }
             }
         });
@@ -310,7 +310,7 @@ public class Content extends JPanel implements ActionListener {
                         torchThread = new Thread(new Torch(1000)); //accidentaly created a storm "lightning effect" - it is useful
                         torchThread.start();
                         //should play a "thunder" sound here...
-                        Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\trigger_sound.wav"));
+                        Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\trigger_sound.wav"));
                         controlDemonTriggerSound = false;
                     }
                 }
@@ -405,11 +405,11 @@ public class Content extends JPanel implements ActionListener {
         if(getTileType(getCurrentLocationX(), getCurrentLocationY()) == 100 && gameState) {
             collectedCoins++;
             currentLevel.getContent()[Math.abs(getCurrentLocationY())][Math.abs(getCurrentLocationX())] = 2;
-            Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\coin_pickup.wav"));
+            Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\coin_pickup.wav"));
         }
         if(getTileType(getCurrentLocationX(), getCurrentLocationY()) == 99 && gameState) {
             currentLevel.getContent()[Math.abs(getCurrentLocationY())][Math.abs(getCurrentLocationX())] = 2;
-            Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\recharge_sound.wav"));
+            Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\recharge_sound.wav"));
             battery += 20;
         }
         //makes sure that the radius of the torch light is within a certain range
@@ -547,6 +547,6 @@ public class Content extends JPanel implements ActionListener {
 
     }
     public static void playJumpScareSound1() {
-        Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\jumpscare_1.wav"));
+        Sound.playSound(new File("C:\\Users\\alxye\\Desktop\\tiles\\walrusGameData\\jumpscare_1.wav"));
     }
 }
