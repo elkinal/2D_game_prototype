@@ -1,13 +1,16 @@
 package Main;
 
+import com.sun.corba.se.spi.orbutil.fsm.Input;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 
 /**
@@ -34,7 +37,7 @@ public class Content extends JPanel implements ActionListener {
     private static int maxSpeed = 10;
 
     public static boolean showHint = false;
-    private static boolean showControls = false;
+    private static boolean showControls = true;
 
     private static BufferedImage tile100; //coin rock tiles
     private static BufferedImage tile99; //battery rock tiles
@@ -48,6 +51,7 @@ public class Content extends JPanel implements ActionListener {
     private static BufferedImage tile7; //small grass snow
     private static BufferedImage tile8; //large grass snow
     private static BufferedImage tile9; //planks
+    private static BufferedImage tile10; //planks with coin
     private static BufferedImage tile11; //large rocks in sand
     private static BufferedImage tile12; //small rocks in sand
     private static BufferedImage tile13; //broken tiles
@@ -99,7 +103,8 @@ public class Content extends JPanel implements ActionListener {
     public static float radius = 300; //leave at 300
     private static float minRadius = 100;
     private static float maxRadius = 400;
-
+    private static InputStream in;
+    private static AudioStream audios;
     private static Thread torchThread = new Thread(new Torch(-300/99)); //remove this later - this is the default
     private static Thread jumpScareThread = new Thread(new ImageJumpScare(1000, 1000)); //remove this later - this is the default
     private static Thread jumpScareThreadInstant = new Thread(new ImageJumpScare(0, 1000)); //remove this later - this is the default
@@ -110,7 +115,15 @@ public class Content extends JPanel implements ActionListener {
         t.start();
         super.setDoubleBuffered(true);
         //starting the background music for the game
-        Sound.playSound(new File("walrusGameData\\house_of_leaves.wav"));
+        try {
+            in = new FileInputStream(new File("walrusGameData\\house_of_leaves.wav"));
+            audios = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        AudioPlayer.player.start(audios);
+
+
         setBackground(Color.BLACK);
         demonMovementThread.start();
         setFocusable(true);
@@ -130,6 +143,7 @@ public class Content extends JPanel implements ActionListener {
             tile7 = ImageIO.read(new File("walrusGameData\\small_grass_snow.jpg"));
             tile8 = ImageIO.read(new File("walrusGameData\\large_grass_snow.jpg"));
             tile9 = ImageIO.read(new File("walrusGameData\\plank_texture.jpg"));
+            tile10 = ImageIO.read(new File("walrusGameData\\plank_coin_texture.jpg"));
             tile11 = ImageIO.read(new File("walrusGameData\\sand_pebbles_large_texture.jpg"));
             tile13 = ImageIO.read(new File("walrusGameData\\broken_tile_texture.jpg"));
             tile12 = ImageIO.read(new File("walrusGameData\\sand_pebbles_small_texture.jpg"));
@@ -247,6 +261,8 @@ public class Content extends JPanel implements ActionListener {
                         graphics2D.drawImage(tile8, tileSize * j + XOffset, tileSize * i + YOffset, tileSize, tileSize, null);
                     if (currentLevel.getContent()[i][j] == 9)
                         graphics2D.drawImage(tile9, tileSize * j + XOffset, tileSize * i + YOffset, tileSize, tileSize, null);
+                    if (currentLevel.getContent()[i][j] == 10)
+                        graphics2D.drawImage(tile10, tileSize * j + XOffset, tileSize * i + YOffset, tileSize, tileSize, null);
                     if (currentLevel.getContent()[i][j] == 11)
                         graphics2D.drawImage(tile11, tileSize * j + XOffset, tileSize * i + YOffset, tileSize, tileSize, null);
                     if (currentLevel.getContent()[i][j] == 12)
@@ -255,6 +271,7 @@ public class Content extends JPanel implements ActionListener {
                         graphics2D.drawImage(tile14, tileSize * j + XOffset, tileSize * i + YOffset, tileSize, tileSize, null);
                     if (currentLevel.getContent()[i][j] == 13)
                         graphics2D.drawImage(tile13, tileSize * j + XOffset, tileSize * i + YOffset, tileSize, tileSize, null);
+
 
 
                 }
@@ -342,15 +359,20 @@ public class Content extends JPanel implements ActionListener {
                 graphics2D.drawString("Mouse Wheel - Change torch size", 20, 450);
                 graphics2D.drawString("Right Click - turn torch ON/OFF", 20, 500);
                 graphics2D.drawString("A larger beam of light wastes more battery", 20, 550);
+                graphics2D.drawString("Press [ESC] to hide controls", 20, 600);
 
             }
 //        demonX = tileSize * 10 + XOffset;
             //have no idea what this does, but it seems to help... find out!
             graphics2D.dispose();
         }
-        else {
+        else { //this is called when the game has been completed
             graphics2D.drawImage(credits1, 0, 0, Program.screenWidth, Program.screenHeight, null);
             graphics2D.dispose();
+            //this should stop the game's background music
+            AudioPlayer.player.stop(audios);
+
+
         }
 
     }
@@ -402,10 +424,14 @@ public class Content extends JPanel implements ActionListener {
             jumpScareThreadInstant.start();
             gameOver();
         }
-        if(getTileType(getCurrentLocationX(), getCurrentLocationY()) == 100 && gameState) {
+        if(getTileType(getCurrentLocationX(), getCurrentLocationY()) == 100 && gameState || getTileType(getCurrentLocationX(), getCurrentLocationY()) == 10 && gameState ) {
             collectedCoins++;
-            currentLevel.getContent()[Math.abs(getCurrentLocationY())][Math.abs(getCurrentLocationX())] = 2;
             Sound.playSound(new File("walrusGameData\\coin_pickup.wav"));
+            if(getTileType(getCurrentLocationX(), getCurrentLocationY()) == 100 && gameState)
+                 currentLevel.getContent()[Math.abs(getCurrentLocationY())][Math.abs(getCurrentLocationX())] = 2;
+            if(getTileType(getCurrentLocationX(), getCurrentLocationY()) == 10 && gameState)
+                currentLevel.getContent()[Math.abs(getCurrentLocationY())][Math.abs(getCurrentLocationX())] = 9;
+
         }
         if(getTileType(getCurrentLocationX(), getCurrentLocationY()) == 99 && gameState) {
             currentLevel.getContent()[Math.abs(getCurrentLocationY())][Math.abs(getCurrentLocationX())] = 2;
